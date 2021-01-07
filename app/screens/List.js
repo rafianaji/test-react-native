@@ -1,18 +1,22 @@
 import React, { useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import Box from '../components/box'
 import { getAll } from '../store/action'
 
-export default function Home() {
+export default function List({navigation}) {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getAll())
-    }, [dispatch])
+    }, [])
     const data = useSelector(state => state.itemReducer.data)
     return (
         <View>
-            {/* <Text>{JSON.stringify(data, null, 2)}</Text> */}
-            <Text>fsdfs</Text>
+            {data && data.map((datum) => {
+                return (
+                    <Box key={datum.id} data={datum} navigation={navigation}></Box>
+                )
+            })}
         </View>
     )
 }

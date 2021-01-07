@@ -1,0 +1,37 @@
+import React from 'react'
+import { View, Text, Dimensions, StyleSheet, Button } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useDispatch } from 'react-redux'
+import { getOne } from '../store/action'
+
+const deviceWidth = Dimensions.get('window').width
+
+export default function box(props) {
+    const { data, navigation } = props
+    function detailHandle() {
+        navigation.navigate('Detail', data)
+    }
+    return (
+        <TouchableOpacity 
+            style={{backgroundColor: "#fff", margin: 3, padding: 10, borderRadius: 7, width: (deviceWidth-20)}}
+            onPress={() => {detailHandle()}}
+        >
+            <Text style={styles.largeText}>{(data.nama_barang).toUpperCase()}</Text>
+            <View style={{display: "flex", flexDirection: 'row'}}>
+                <Text style={styles.smallText}>Harga: {data.harga_satuan} </Text>
+                <Text style={styles.smallText}> Stock: {data.stock}</Text>
+            </View>
+            
+        </TouchableOpacity>
+    )
+}
+
+const styles = StyleSheet.create({
+    largeText: {
+        fontSize: 16,
+        fontWeight: "bold"
+    },
+    smallText: {
+        fontSize: 11
+    },
+});
