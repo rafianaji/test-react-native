@@ -26,13 +26,13 @@ export default function Detail({navigation, route}) {
     }
     return (
         <View style={styles.container}>
-            <View style={{backgroundColor: '#fff', borderRadius: 5, padding: 8}}>
+            <View style={{backgroundColor: '#fff', borderRadius: 5, padding: 15}}>
                 <Text style={{fontSize: 25, fontWeight: "bold", textAlign: 'center'}}>{(data.nama_barang).toUpperCase()}</Text>
                 <Text style={{fontSize: 12, textAlign: 'center'}}>{data.kode_barang}</Text>
-                <Text style={{fontSize: 18}}>{data.deskripsi_barang}</Text>
-                <View style={{flex: 0, flexDirection: 'row'}}>
-                    <Text style={{fontWeight: "bold"}}>Rp. {(data.harga_satuan)}</Text>
-                    <Text style={{marginBottom: 9, textAlign: 'right'}}>Stock: {data.stock}</Text>
+                <Text style={{fontSize: 17, marginTop: 5}}>{data.deskripsi_barang}</Text>
+                <View style={{marginTop: 8,flexDirection: "row", alignItems: 'center', width: "100%", justifyContent:'space-between', marginBottom: 9}}>
+                    <Text style={{textAlign: 'right', fontSize: 14}}>Stock: {data.stock}</Text>
+                    <Text style={{fontSize: 18,fontWeight: "bold"}}>Rp. {(data.harga_satuan)}</Text>
                 </View>
                 <View style={{marginBottom: 8}}>
                     <Button title="Edit" onPress={() => {navigation.navigate('Edit', data)}} />

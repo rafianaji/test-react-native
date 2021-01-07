@@ -40,50 +40,52 @@ export default function Form({navigation, route}) {
     }
     return (
         <View style={styles.container}>
-            <View style={styles.containerInput}>
-                <Text style={styles.labelInput}>Kode Barang</Text>
-                <TextInput
-                    style={styles.textInputStyle}
-                    onChangeText={(text) => {setKodeBarang(text)}}
-                    defaultValue={kodeBarang}
-                />
+            <View style={{backgroundColor: "#fff", padding: 10, borderRadius: 5}}>
+                <View style={styles.containerInput}>
+                    <Text style={styles.labelInput}>Kode Barang</Text>
+                    <TextInput
+                        style={styles.textInputStyle}
+                        onChangeText={(text) => {setKodeBarang(text)}}
+                        defaultValue={kodeBarang}
+                        />
+                </View>
+                <View style={styles.containerInput}>
+                    <Text style={styles.labelInput}>Nama Barang</Text>
+                    <TextInput
+                        style={styles.textInputStyle}
+                        onChangeText={(text) => {setNamaBarang(text)}}
+                        defaultValue={namaBarang}
+                        />
+                </View>
+                <View style={styles.containerInput}>
+                    <Text style={styles.labelInput}>Deskripsi Barang</Text>
+                    <TextInput
+                        style={styles.textInputStyle}
+                        onChangeText={(text) => {setDeskripsiBarang(text)}}
+                        defaultValue={deskripsiBarang}
+                        />
+                </View>
+                <View style={styles.containerInput}>
+                    <Text style={styles.labelInput}>Harga Satuan</Text>
+                    <TextInput
+                        style={styles.textInputStyle}
+                        onChangeText={(text) => {setHargaSatuan(text)}}
+                        defaultValue={String(hargaSatuan)}
+                        />
+                </View>
+                <View style={styles.containerInput}>
+                    <Text style={styles.labelInput}>Stock</Text>
+                    <TextInput
+                        style={styles.textInputStyle}
+                        onChangeText={(text) => {setStock(text)}}
+                        defaultValue={String(stock)}
+                        />
+                </View>
+                <Button 
+                 title="Save"
+                 onPress={() => {handleSubmit()}}
+                 />
             </View>
-            <View style={styles.containerInput}>
-                <Text style={styles.labelInput}>Nama Barang</Text>
-                <TextInput
-                    style={styles.textInputStyle}
-                    onChangeText={(text) => {setNamaBarang(text)}}
-                    defaultValue={namaBarang}
-                />
-            </View>
-            <View style={styles.containerInput}>
-                <Text style={styles.labelInput}>Deskripsi Barang</Text>
-                <TextInput
-                    style={styles.textInputStyle}
-                    onChangeText={(text) => {setDeskripsiBarang(text)}}
-                    defaultValue={deskripsiBarang}
-                />
-            </View>
-            <View style={styles.containerInput}>
-                <Text style={styles.labelInput}>Harga Satuan</Text>
-                <TextInput
-                    style={styles.textInputStyle}
-                    onChangeText={(text) => {setHargaSatuan(text)}}
-                    defaultValue={String(hargaSatuan)}
-                />
-            </View>
-            <View style={styles.containerInput}>
-                <Text style={styles.labelInput}>Stock</Text>
-                <TextInput
-                    style={styles.textInputStyle}
-                    onChangeText={(text) => {setStock(text)}}
-                    defaultValue={String(stock)}
-                />
-            </View>
-            <Button 
-             title="Save"
-             onPress={() => {handleSubmit()}}
-            />
         </View>
     )
 }
@@ -107,7 +109,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#E4E9EF',
-        padding: 5
+        padding: 10
     },
     labelInput: {
         fontWeight: 'bold'
