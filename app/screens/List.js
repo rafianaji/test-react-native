@@ -9,7 +9,7 @@ export default function List({navigation}) {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getAll())
-    }, [])
+    }, [dispatch])
     const data = useSelector(state => state.itemReducer.data)
     return (
         <View style={styles.container}>

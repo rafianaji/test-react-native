@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Button, StyleSheet, Alert } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteOne } from '../store/action'
+import { deleteOne, getAll } from '../store/action'
 
 export default function Detail({navigation, route}) {
     const dispatch = useDispatch()
@@ -18,6 +18,7 @@ export default function Detail({navigation, route}) {
                     text: 'Ok',
                     onPress: () => {
                         dispatch(deleteOne(data.id))
+                        dispatch(getAll())
                         navigation.navigate('List')
                     }
                 }

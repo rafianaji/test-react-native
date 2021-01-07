@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export function getAll() {
     return (dispatch, getState) => {
         fetch(`http://222.124.168.221:8500/mitra_test/api/barang/get-all`)
@@ -54,12 +52,15 @@ export function getOne(id) {
 
 export function update(id, data) {
     return (dispatch, getState) => {
-        axios({
+        fetch( `http://222.124.168.221:8500/mitra_test/api/barang/update/${id}`, {
             method: 'POST',
-            url: `http://222.124.168.221:8500/mitra_test/api/barang/update/${id}`,
-            data: data
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
         })
-            .then(({data}) => {
+            .then(response => response.json())
+            .then((data) => {
                 dispatch({
                     type: 'UPDATE',
                     payload: data.message
@@ -71,7 +72,7 @@ export function update(id, data) {
 
 export function deleteOne(id) {
     return (dispatch, getState) => {
-        return fetch(`http://222.124.168.221:8500/mitra_test/api/barang/delete/${id}`, {
+        fetch(`http://222.124.168.221:8500/mitra_test/api/barang/delete/${id}`, {
             method: 'DELETE', // Method itself
             headers: {
              'Content-type': 'application/json; charset=UTF-8' // Indicates the content 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, Button, Dimensions, StyleSheet, Alert } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import { useDispatch } from 'react-redux'
-import { create } from '../store/action'
+import { create, getAll } from '../store/action'
 
 const deviceWidth = Dimensions.get('window').width
 
@@ -23,6 +23,7 @@ export default function Form({navigation, route}) {
                 stock
             }
             dispatch(create(obj))
+            dispatch(getAll())
             navigation.navigate('List')
         } else if (!kodeBarang || !namaBarang || !deskripsiBarang || !hargaSatuan || !stock) {
             Alert.alert(
@@ -104,7 +105,7 @@ const styles = StyleSheet.create({
         marginTop: 5, 
         borderRadius: 3, 
         padding: 10,
-        width: deviceWidth/2
+        width: deviceWidth-50
     },
     container: {
         flex: 1,

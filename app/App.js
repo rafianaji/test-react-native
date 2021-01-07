@@ -9,6 +9,7 @@ import store from './store';
 import Detail from './screens/Detail';
 import Form from './screens/Form';
 import Create from './screens/Create';
+import Home from './screens/Home';
 
 const Stack = createStackNavigator()
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar style="auto" />
         <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="List" component={List} />
           <Stack.Screen name="Detail" component={Detail} />
           <Stack.Screen name="Edit" component={Form} />
