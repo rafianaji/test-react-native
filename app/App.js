@@ -19,7 +19,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="List" component={List} />
           <Stack.Screen name="Detail" component={Detail} />
-          <Stack.Screen name="Form" component={Form} />
+          <Stack.Screen name="Edit" component={Form} />
           <Stack.Screen name="Create" component={Create} />
         </Stack.Navigator>
       </NavigationContainer>

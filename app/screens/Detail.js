@@ -23,18 +23,20 @@ export default function Detail({navigation, route}) {
                 }
             ]
         )
-        // dispatch(deleteOne(data.id))
-        // navigation.navigate('List')
     }
     return (
         <View style={styles.container}>
-            <Text>{data.kode_barang}</Text>
-            <Text>{data.nama_barang}</Text>
-            <Text>{data.deskripsi_barang}</Text>
-            <Text>{data.harga_satuan}</Text>
-            <Text>{data.stock}</Text>
-            <View style={{flex: 1, flexDirection: "row", alignItems: 'flex-start'}}>
-                <Button title="Edit" onPress={() => {navigation.navigate('Form', data)}}/>
+            <View style={{backgroundColor: '#fff', borderRadius: 5, padding: 8}}>
+                <Text style={{fontSize: 25, fontWeight: "bold", textAlign: 'center'}}>{(data.nama_barang).toUpperCase()}</Text>
+                <Text style={{fontSize: 12, textAlign: 'center'}}>{data.kode_barang}</Text>
+                <Text style={{fontSize: 18}}>{data.deskripsi_barang}</Text>
+                <View style={{flex: 0, flexDirection: 'row'}}>
+                    <Text style={{fontWeight: "bold"}}>Rp. {(data.harga_satuan)}</Text>
+                    <Text style={{marginBottom: 9, textAlign: 'right'}}>Stock: {data.stock}</Text>
+                </View>
+                <View style={{marginBottom: 8}}>
+                    <Button title="Edit" onPress={() => {navigation.navigate('Edit', data)}} />
+                </View>
                 <Button color="#e12a3a" title="Delete" onPress={() => {deleteHandle()}}/>
             </View>
         </View>
@@ -45,6 +47,6 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#E4E9EF',
-      alignItems: 'center',
+      padding: 10,
     },
 });

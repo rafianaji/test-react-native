@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Button, Dimensions, StyleSheet } from 'react-native'
+import { View, Text, Button, Dimensions, StyleSheet, Alert } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import { useDispatch, useSelector } from 'react-redux'
 import { update, create } from '../store/action'
@@ -15,20 +15,33 @@ export default function Form({navigation, route}) {
     const [stock, setStock] = useState(data.stock)
     const dispatch = useDispatch()
     function handleSubmit() {
-        const obj={
-            kode_barang: kodeBarang,
-            nama_barang: namaBarang,
-            deskripsi_barang: deskripsiBarang,
-            harga_satuan: hargaSatuan,
-            stock
-        }
-        dispatch(update(data.id, obj))
+        if (Number(hargaSatuan) && Number(stock) && Number(kodeBarang)) {
+            const obj={
+                kode_barang: kodeBarang,
+                nama_barang: namaBarang,
+                deskripsi_barang: deskripsiBarang,
+                harga_satuan: hargaSatuan,
+                stock
+            }
+            dispatch(update(data.id, obj))
             navigation.navigate('List')
+        } else if (!kodeBarang || !namaBarang || !deskripsiBarang || !hargaSatuan || !stock) {
+            Alert.alert(
+                'Warning',
+                'Semua form harus diisi dan Kode Barang, Harga, Stock harus diisi angka'
+            )
+        } else {
+            Alert.alert(
+                'Warning',
+                'Kode Barang, Harga, Stock harus diisi angka'
+            )
+        }
+        
     }
     return (
-        <View>
+        <View style={styles.container}>
             <View style={styles.containerInput}>
-                <Text>Kode Barang</Text>
+                <Text style={styles.labelInput}>Kode Barang</Text>
                 <TextInput
                     style={styles.textInputStyle}
                     onChangeText={(text) => {setKodeBarang(text)}}
@@ -36,7 +49,7 @@ export default function Form({navigation, route}) {
                 />
             </View>
             <View style={styles.containerInput}>
-                <Text>Nama Barang</Text>
+                <Text style={styles.labelInput}>Nama Barang</Text>
                 <TextInput
                     style={styles.textInputStyle}
                     onChangeText={(text) => {setNamaBarang(text)}}
@@ -44,7 +57,7 @@ export default function Form({navigation, route}) {
                 />
             </View>
             <View style={styles.containerInput}>
-                <Text>Deskripsi Barang</Text>
+                <Text style={styles.labelInput}>Deskripsi Barang</Text>
                 <TextInput
                     style={styles.textInputStyle}
                     onChangeText={(text) => {setDeskripsiBarang(text)}}
@@ -52,7 +65,7 @@ export default function Form({navigation, route}) {
                 />
             </View>
             <View style={styles.containerInput}>
-                <Text>Harga Satuan</Text>
+                <Text style={styles.labelInput}>Harga Satuan</Text>
                 <TextInput
                     style={styles.textInputStyle}
                     onChangeText={(text) => {setHargaSatuan(text)}}
@@ -60,14 +73,17 @@ export default function Form({navigation, route}) {
                 />
             </View>
             <View style={styles.containerInput}>
-                <Text>Stock</Text>
+                <Text style={styles.labelInput}>Stock</Text>
                 <TextInput
                     style={styles.textInputStyle}
                     onChangeText={(text) => {setStock(text)}}
                     defaultValue={String(stock)}
                 />
             </View>
-            <Button title="Save" onPress={() => {handleSubmit()}}/>
+            <Button 
+             title="Save"
+             onPress={() => {handleSubmit()}}
+            />
         </View>
     )
 }
@@ -75,15 +91,25 @@ export default function Form({navigation, route}) {
 const styles = StyleSheet.create({
     containerInput: {
         display: "flex", 
-        flexDirection: "row", 
-        alignItems: "center"
+        flexDirection: "column", 
+        alignItems: 'flex-start',
+        marginBottom: 8
     },
     textInputStyle: {
-        height: 30, 
+        height: 40, 
         borderWidth: 1, 
         borderColor: "black", 
-        margin: 15, 
-        borderRadius: 5, 
+        marginTop: 5, 
+        borderRadius: 3, 
+        padding: 10,
         width: deviceWidth/2
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#E4E9EF',
+        padding: 5
+    },
+    labelInput: {
+        fontWeight: 'bold'
     }
 });

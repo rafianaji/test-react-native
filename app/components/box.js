@@ -16,11 +16,10 @@ export default function box(props) {
         >
             <Text style={styles.largeText}>{(data.nama_barang).toUpperCase()}</Text>
             <Text>{data.deskripsi_barang}</Text>
-            <View style={{display: "flex", flexDirection: 'row'}}>
-                <Text style={styles.smallText}>Harga: {(data.harga_satuan)} </Text>
-                <Text style={styles.smallText}> Stock: {data.stock}</Text>
+            <View style={{display: "flex", flexDirection: 'row', marginTop: 3}}>
+                <Text style={styles.smallText}>Rp. {(data.harga_satuan)} </Text>
+                {/* <Text style={styles.smallText}> Stock: {data.stock}</Text> */}
             </View>
-            
         </TouchableOpacity>
     )
 }
@@ -31,6 +30,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     smallText: {
-        fontSize: 11
+        fontSize: 18,
+        fontWeight: "bold"
     },
 });
