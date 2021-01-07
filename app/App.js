@@ -8,9 +8,9 @@ import List from './screens/List';
 import store from './store';
 import Detail from './screens/Detail';
 import Form from './screens/Form';
+import Create from './screens/Create';
 
 const Stack = createStackNavigator()
-const deviceHeight = Dimensions.get('window').height
 export default function App() {
   return (
     <Provider store={store}>
@@ -20,18 +20,9 @@ export default function App() {
           <Stack.Screen name="List" component={List} />
           <Stack.Screen name="Detail" component={Detail} />
           <Stack.Screen name="Form" component={Form} />
+          <Stack.Screen name="Create" component={Create} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#E4E9EF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: deviceHeight
-  },
-});

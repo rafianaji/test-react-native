@@ -30,6 +30,12 @@ export default function itemReducer(state = initialState, action) {
                 message: action.payload
             }
             return newStateUpdate
+        case 'DELETE':
+            const newStateDelete = {
+                ...state,
+                message: action.payload
+            }
+            return newStateDelete
         default:
             return state;
     }
